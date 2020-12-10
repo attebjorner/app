@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Анкета {% endblock %}
+
+{% block content %}
+    <h1><center><b>Анкета</b></center></h1>
+    <form action="/" method = 'GET'>
+        <center><fieldset><div dir="rtl">
+        טיפש הוא<br>
+        <input type="radio" name="q_fool" value="00"> איש, שלא יודע שהוא לא יודע<br>
+        <input type="radio" name="q_fool" value="01"> איש, שלא יודע שהוא יודע<br>
+        <input type="radio" name="q_fool" value="10"> איש, שיודע שהוא לא יודע<br>
+        <br>
+		את/ה כובב/ת والله בעברית כמו: 
+		<br>
+		<input type="checkbox" name="q_walla" value="double_vav"> וואלה<br>
+		<input type="checkbox" name="q_walla" value="single_vav"> ואלה<br>
+		<br>
+        תכתוב/תכתבי את המשמעות של מילה <b>להתיחס</b>:
+        </div>
+        <input type="text" name="q_def"><br><br>
+            Как вас зовут?<br>
+            <i>Впишите имя латиницей или кирилицей</i><br>
+        <input type="text" name="name" required pattern='[A-Za-zА-Яа-яЁё]+'><br><br>
+            Когда вы родились?<br>
+            <i>Введите в формате <b>dd.mm.yyyy</b></i><br>
+        <input type="text" name="birthday" required pattern='(\d\d\.){2}\d{4}'><br><br>
+        <p><input type="submit" value="Отправить"></p>
+        </fieldset></center>
+    </form>
+{% endblock %}
