@@ -1,11 +1,31 @@
-from flask import Flask, render_template, request
-from models import User, Questions, Answers, db
+from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////home/gosha/py/hw8/test.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
 db.app = app
 db.init_app(app)
+
+class User(db.Model):
+    __tablename__ = 'user'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text)
+    bitrhday = db.Column(db.Text)
+
+class Questions(db.Model):
+    __tablename__ = 'questions'
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.Text)
+
+class Answers(db.Model):
+    __tablename__ = 'answers'
+    id = db.Column(db.Integer, primary_key=True)
+    q_fool = db.Column(db.Text)
+    q_walla = db.Column(db.Text)
+    q_def = db.Column(db.Text)
 
 @app.route('/stats')
 def stats():
